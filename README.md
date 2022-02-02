@@ -19,7 +19,7 @@ You should run the `CheckingAccount` tests to verify your
 The provided `Bank` class has a `transfer()` method that should allow users to transfer 
 money between accounts. The method should return `true` if the amount can be withdrawn from one
 account and deposited to the other. If the transfer fails due to a `TransactionException` occurring,
-the method should log the exception, and return false. If the transfer fails due to an 
+the method should display a meaningful message to log the exception, and return false. If the transfer fails due to an 
 `InvalidInputException` the method should propagate the exception. 
 
 You can run `./gradlew -q clean test` to verify your `Bank` implementation.
