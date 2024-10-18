@@ -2,6 +2,8 @@ package com.amazon.ata.handlingexceptions;
 
 import java.math.BigDecimal;
 
+import com.amazon.ata.handlingexceptions.exceptions.InsufficientFundsException;
+import com.amazon.ata.handlingexceptions.exceptions.TransactionException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,8 +22,20 @@ public class Bank {
      * @param amount of money to transfer.
      * @return true if transfer was successful, false if transfer fails due to insufficient funds
      */
-    public boolean transfer(BankAccount fromAccount, BankAccount toAccount, BigDecimal amount) {
-        // TODO: implement
-        return false;
+    public boolean transfer(BankAccount fromAccount, BankAccount toAccount, BigDecimal amount) throws TransactionException {
+
+        boolean isSuccessful;
+
+        try {
+            fromAccount.withdraw(amount);
+            toAccount.deposit(amount);
+        } catch(InsufficientFundsException e) {
+            isSuccessful = false;
+            return isSuccessful;
+        }
+
+        isSuccessful = true;
+
+        return isSuccessful;
     }
 }

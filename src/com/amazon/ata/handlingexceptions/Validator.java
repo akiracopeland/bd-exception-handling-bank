@@ -14,7 +14,7 @@ public class Validator {
      * @param amount input to validate.
      * @throws InvalidInputException is not valid.
      */
-    public void validate(BigDecimal amount) {
+    public void validate(BigDecimal amount) throws InvalidInputException{
         // check if input is null or negative
         if (amount == null || amount.signum() == -1) {
             throw new InvalidInputException("Amount cannot be null or negative");

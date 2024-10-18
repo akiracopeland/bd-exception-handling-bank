@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 
+import com.amazon.ata.handlingexceptions.exceptions.TransactionException;
 import org.junit.jupiter.api.Test;
 
 import com.amazon.ata.handlingexceptions.exceptions.InvalidInputException;
@@ -16,7 +17,7 @@ class BankTest {
     private Bank bank = new Bank();
     
     @Test
-    public void transfer_validInput_returnsTrue() throws InvalidInputException {
+    public void transfer_validInput_returnsTrue() throws InvalidInputException, TransactionException {
         
         // GIVEN
         CheckingAccount account1 = new CheckingAccount("account1", new BigDecimal("500.00"));
@@ -34,7 +35,7 @@ class BankTest {
     }
     
     @Test
-    public void transfer_insufficientFunds_returnsFalse() throws InvalidInputException {
+    public void transfer_insufficientFunds_returnsFalse() throws InvalidInputException, TransactionException {
         
         // GIVEN
         CheckingAccount account1 = new CheckingAccount("account1", new BigDecimal("500.00"));
